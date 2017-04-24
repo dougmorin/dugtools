@@ -1,0 +1,62 @@
+# adds the bin directories for git and drush
+export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+
+# Shuts off homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
+# Properly formats the command line interface
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+
+export PS1="\n${GREEN}\w${RESET}\n$ "
+
+# Sets sublime text as the default editor
+export EDITOR='nano'
+
+# Setup auto completion for text
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# Allow you to move hidden files
+shopt -s dotglob
+
+# Alias Definitions
+alias clr='clear'
+alias cl='clear'
+alias removeds='find . -name ".DS_Store" | xargs rm'
+alias lsd='ls -lash'
+alias ..='cd ..'
+alias webdir='cd ~/Dropbox/Websites'
+alias wd='cd ~/Dropbox/Websites'
+alias tw='gittower .'
+alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+
+# function for setting terminal titles in OSX
+function title {
+  printf "\033]0;%s\007" "$1"
+}
+
+# auto merge and push
+function mergeit {
+  git push origin
+  git push web
+  git co production
+  git merge master
+  git push web
+  git co master
+}
+
+function hideallfiles(){
+    defaults write com.apple.finder AppleShowAllFiles -bool NO
+    killall Finder
+}
+
+function showallfiles(){
+    defaults write com.apple.finder AppleShowAllFiles -bool YES
+    killall Finder
+}
+
+function flushdns {
+    sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder; say cache flushed
+}
