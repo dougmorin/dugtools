@@ -8,13 +8,13 @@ Note: For this instance, I usually use RDS for my database instances so we will 
   - Allow HTTP for all.
   - Allow HTTPS for all (if you're going to use https)
 
-* Update the Server
+2. Update the Server
 
   ```
   sudo yum update -y
   ```
 
-* Shut off SELinux
+3. Shut off SELinux
 
   ```
   sudo nano /etc/selinux/config
@@ -28,12 +28,12 @@ Note: For this instance, I usually use RDS for my database instances so we will 
   SELINUX=disabled
   ```
 
-* Install the basic projects not included with the build
-```
-sudo yum install wget htop nano
-```
+4. Install the basic projects not included with the build
+  ```
+  sudo yum install wget htop nano
+  ```
 
-* Configure the timezones.  For us, we're in the EST so we use America/New_York.
+5. Configure the timezones.  For us, we're in the EST so we use America/New_York.
 
   ```
   sudo timedatectl set-timezone America/New_York
@@ -42,7 +42,7 @@ sudo yum install wget htop nano
   sudo systemctl enable ntpd
   ```
 
-* Install the EPEL Repo through the fedora project
+6. Install the EPEL Repo through the fedora project
 
   Taken from https://www.cyberciti.biz/faq/installing-rhel-epel-repo-on-centos-redhat-7-x
 
@@ -51,7 +51,7 @@ sudo yum install wget htop nano
   sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
   ```
 
-* If you want PHP 5.6, use the following instructions.  Currently, by default Centos 7 (for aws) uses PHP 5.4, so this overrides that.
+7. If you want PHP 5.6, use the following instructions.  Currently, by default Centos 7 (for aws) uses PHP 5.4, so this overrides that.
 
   Taken from https://www.digitalocean.com/community/questions/how-to-install-php-5-6-on-centos-7-0-x64
 
@@ -69,7 +69,7 @@ sudo yum install wget htop nano
 
   In the first section that says `[remi]`, change `enabled=0` to `enabled=1`.  Now, look for the section that is headed with `[remi-php56]`.  In this section, change `enabled=0` to `enabled=1`. Save and exit.
 
-* Install Apache
+8. Install Apache
 
   ```
   sudo yum install httpd -y
@@ -77,7 +77,7 @@ sudo yum install wget htop nano
   sudo systemctl enable httpd
   ```
 
-* Install PHP
+9. Install PHP
 
   ```
   sudo yum install php php-mysql php-gd php-mcrypt php-mbstring mod_ssl
@@ -97,13 +97,13 @@ sudo yum install wget htop nano
   cgi.fix_pathinfo=0
   ```
 
-* Reboot and make sure everything is functioning properly at this time
+10. Reboot and make sure everything is functioning properly at this time
 
   ```
   sudo shutdown -r now
   ```
 
-* Configure Apache to be a VHOST server
+11. Configure Apache to be a VHOST server
 
   Add this to the bottom of your http.conf file.  Currently, mine is located at `/etc/httpd/conf/httpd.conf`.
 
