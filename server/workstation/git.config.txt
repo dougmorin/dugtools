@@ -1,0 +1,7 @@
+alias.co=checkout
+alias.ci=commit
+alias.st=status
+alias.br=branch
+alias.lc=log --graph --oneline --decorate -15
+alias.lca=log --graph --oneline --decorate
+alias.u=fetch -pv --all

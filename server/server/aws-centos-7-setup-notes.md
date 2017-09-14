@@ -14,7 +14,13 @@ Note: For this instance, I usually use RDS for my database instances so we will 
     sudo yum update -y
     ```
 
-3. Shut off SELinux
+3. Install the basic projects not included with the build
+
+    ```
+    sudo yum install wget htop nano
+    ```
+
+4. Shut off SELinux
 
     ```
     sudo nano /etc/selinux/config
@@ -26,12 +32,6 @@ Note: For this instance, I usually use RDS for my database instances so we will 
     SELINUX=enforcing
     # to
     SELINUX=disabled
-    ```
-
-4. Install the basic projects not included with the build
-
-    ```
-    sudo yum install wget htop nano
     ```
 
 5. Configure the timezones.  For us, we're in the EST so we use America/New_York.
@@ -50,6 +50,7 @@ Note: For this instance, I usually use RDS for my database instances so we will 
     ```
     cd /tmp
     sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum -y install epel-release-latest-7.noarch.rpm
     ```
 
 7. If you want PHP 5.6, use the following instructions.  Currently, by default Centos 7 (for aws) uses PHP 5.4, so this overrides that.
@@ -81,7 +82,7 @@ Note: For this instance, I usually use RDS for my database instances so we will 
 9. Install PHP
 
     ```
-    sudo yum install php php-mysql php-gd php-mcrypt php-mbstring mod_ssl
+    sudo yum install php php-mysql php-gd php-mcrypt php-mbstring mod_ssl -y
     ```
 
     Modify the php.ini file
@@ -110,6 +111,9 @@ Note: For this instance, I usually use RDS for my database instances so we will 
 
     _Just to note, there are other variables you should probably modify in your httpd config file, but i'll leave that up to you._
 
+    ```
+    sudo nano /etc/httpd/conf/httpd.conf
+    ```
     ```
     Include /etc/httpd/vhost.d/*.conf
     ```
