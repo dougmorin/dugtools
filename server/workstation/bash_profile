@@ -10,9 +10,6 @@ RESET="\[$(tput sgr0)\]"
 
 export PS1="\n${GREEN}\w${RESET}\n$ "
 
-# Sets sublime text as the default editor
-export EDITOR='nano'
-
 # Setup auto completion for text
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
@@ -25,26 +22,19 @@ shopt -s dotglob
 alias clr='clear'
 alias cl='clear'
 alias removeds='find . -name ".DS_Store" | xargs rm'
-alias lsd='ls -lash'
+alias linkmysql='. ~/Dropbox/Websites/dugtools/bash/mysql_link.sh'
+alias la='ls -lash'
 alias ..='cd ..'
-alias webdir='cd ~/Dropbox/Websites'
 alias wd='cd ~/Dropbox/Websites'
-alias tw='gittower .'
+alias drp='cd ~/Dropbox'
+alias gst='git st'
+alias gu='git fetch -pv --all'
+alias dsh='cd ~/Dropbox/Clients/Rinck\ Advertising/Digital\ Shared/'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 
 # function for setting terminal titles in OSX
 function title {
   printf "\033]0;%s\007" "$1"
-}
-
-# auto merge and push
-function mergeit {
-  git push origin
-  git push web
-  git co production
-  git merge master
-  git push web
-  git co master
 }
 
 function hideallfiles(){
