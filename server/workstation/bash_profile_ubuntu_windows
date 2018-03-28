@@ -1,0 +1,17 @@
+# Properly formats the command line interface
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+
+export PS1="\n${GREEN}\w${RESET}\n$ "
+
+# Alias Definitions
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias clr='reset'
+alias cl='reset'
+alias la='ls -lash'
+alias ..='cd ..'
+alias wd='cd ~/Dropbox/Websites'
+alias drp='cd ~/Dropbox'
+alias gst='git st'
+alias gu='git fetch -pv --all'
+alias dsh='cd ~/Dropbox/Clients/Rinck\ Advertising/Digital\ Shared/'

@@ -1,5 +1,5 @@
 # adds the bin directories for git and drush
-export PATH=/Applications/MAMP/Library/bin:/usr/local/bin:/usr/local/sbin:~/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/Applications/MAMP/Library/bin:$PATH
 
 # Shuts off homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
@@ -11,14 +11,16 @@ RESET="\[$(tput sgr0)\]"
 export PS1="\n${GREEN}\w${RESET}\n$ "
 
 # Setup auto completion for text
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -f ~/Dropbox/bin/.git-completion.bash ]; then
+  . ~/Dropbox/bin/.git-completion.bash
 fi
+
 
 # Allow you to move hidden files
 shopt -s dotglob
 
 # Alias Definitions
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias clr='clear'
 alias cl='clear'
 alias removeds='find . -name ".DS_Store" | xargs rm'
@@ -26,11 +28,25 @@ alias linkmysql='. ~/Dropbox/Websites/dugtools/bash/mysql_link.sh'
 alias la='ls -lash'
 alias ..='cd ..'
 alias wd='cd ~/Dropbox/Websites'
+alias wr='cd ~/Dropbox/React'
 alias drp='cd ~/Dropbox'
 alias gst='git st'
 alias gu='git fetch -pv --all'
 alias dsh='cd ~/Dropbox/Clients/Rinck\ Advertising/Digital\ Shared/'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+alias ls='ls -lash'
+
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+
+alias got='git '
+alias get='git '
 
 # function for setting terminal titles in OSX
 function title {
