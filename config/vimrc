@@ -73,9 +73,3 @@ if has('gui_running')
   " Set the gui font and font type
   set guifont=Monaco:h14
 endif
-
-
-
-
-
-
