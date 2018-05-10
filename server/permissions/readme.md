@@ -39,7 +39,7 @@ Once this is all setup, you can run the following commands from the user you set
 
 #### For Wordpress
 ```
-sudo bash fixpermissions-wordpress.sh \
+bash fixpermissions-wordpress.sh \
 --wordpress_root=/home/site/public_html \
 --wordpress_user=site \
 --httpd_group=apache
@@ -47,7 +47,7 @@ sudo bash fixpermissions-wordpress.sh \
 
 #### For Drupal
 ```
-sudo bash fixpermissions-drupal.sh \
+bash fixpermissions-drupal.sh \
 --drupal_root=/home/site/public_html \
 --drupal_user=site \
 --httpd_group=apache
