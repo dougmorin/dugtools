@@ -32,3 +32,23 @@ The user has been sanitized, of course.  I put both of my files in the same fold
 user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-drupal.sh
 user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-wordpress.sh
 ```
+
+### Call the scripts
+
+Once this is all setup, you can run the following commands from the user you setup to run in the sudoer file.
+
+#### For Wordpress
+```
+sudo bash fixpermissions-wordpress.sh \
+--wordpress_root=/home/site/public_html \
+--wordpress_user=site \
+--httpd_group=apache
+```
+
+#### For Drupal
+```
+sudo bash fixpermissions-drupal.sh \
+--drupal_root=/home/site/public_html \
+--drupal_user=site \
+--httpd_group=apache
+```
