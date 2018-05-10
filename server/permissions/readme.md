@@ -15,9 +15,9 @@ The following files have been taken from https://www.drupal.org/node/244924 and 
 If you have sufficient privileges on your server
 
     1. Place the file in /usr/local/bin 
-    2. `sudo chown root:root /usr/local/bin/fix-permissions.sh`
+    2. `sudo chown root:root /usr/local/bin/fixpermissions-{wordpress/drupal}`
     3. `sudo vi /etc/sudoers.d/fix-permissions` and enter the following line in the file
-    4. `user1, user2 ALL = (root) NOPASSWD: /usr/local/bin/fix-permissions.sh`
+    4. `user1, user2 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-{wordpress/drupal}`
     5. Save the file and then `sudo chmod 0440 /etc/sudoers.d/fix-permissions`
 
 Note: Substitute your desired comma separated list of users where you see user1, user2 above. Alternatively, you could enter an ALIAS for a user list. Run man sudoers for more information on formatting the line.
@@ -29,8 +29,8 @@ What the /etc/sudoers.d/fix-permissions accomplishes is making the script availa
 The user has been sanitized, of course.  I put both of my files in the same folder.
 
 ```
-user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-drupal.sh
-user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-wordpress.sh
+user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-drupal
+user1 ALL = (root) NOPASSWD: /usr/local/bin/fixpermissions-wordpress
 ```
 
 ### Call the scripts
@@ -39,7 +39,7 @@ Once this is all setup, you can run the following commands from the user you set
 
 #### For Wordpress
 ```
-bash fixpermissions-wordpress.sh \
+bash fixpermissions-wordpress \
 --wordpress_root=/home/site/public_html \
 --wordpress_user=site \
 --httpd_group=apache
@@ -47,7 +47,7 @@ bash fixpermissions-wordpress.sh \
 
 #### For Drupal
 ```
-bash fixpermissions-drupal.sh \
+bash fixpermissions-drupal \
 --drupal_root=/home/site/public_html \
 --drupal_user=site \
 --httpd_group=apache
