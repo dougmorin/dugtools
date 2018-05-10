@@ -25,7 +25,6 @@ alias clr='clear'
 alias cl='clear'
 alias removeds='find . -name ".DS_Store" | xargs rm'
 alias linkmysql='. ~/Dropbox/Websites/dugtools/bash/mysql_link.sh'
-alias la='ls -lash'
 alias ..='cd ..'
 alias wd='cd ~/Dropbox/Websites'
 alias wr='cd ~/Dropbox/React'
@@ -35,6 +34,7 @@ alias gu='git fetch -pv --all'
 alias dsh='cd ~/Dropbox/Clients/Rinck\ Advertising/Digital\ Shared/'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias ls='ls -lash'
+alias ll='ls -lash'
 
 alias gs='git status '
 alias ga='git add '
@@ -66,3 +66,8 @@ function showallfiles(){
 function flushdns {
     sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder; say cache flushed
 }
+
+function ptime() {
+  ping "$1" | while read pong; do echo "$(date): $pong"; done
+}
+
