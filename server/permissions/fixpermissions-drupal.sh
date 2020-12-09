@@ -26,11 +26,11 @@ fi
 
 drupal_path=${1%/}
 drupal_user=${2}
-httpd_group="${3:-apache}"
+httpd_group="${3:-www-data}"
 
 # Parse Command Line Arguments
 while [ "$#" -gt 0 ]; do
-  case "$1" in
+case "$1" in
     --drupal_path=*)
         drupal_path="${1#*=}"
         ;;
@@ -82,8 +82,10 @@ find . -type d -name files -exec chmod ug=rwx,o= '{}' \;
 
 printf "Changing permissions of all files inside all "files" directories in "${drupal_path}/sites" to "rw-rw----"...\n"
 printf "Changing permissions of all directories inside all "files" directories in "${drupal_path}/sites" to "rwxrwx---"...\n"
+
 for x in ./*/files; do
   find ${x} -type d -exec chmod ug=rwx,o= '{}' \;
   find ${x} -type f -exec chmod ug=rw,o= '{}' \;
 done
+
 echo "Done setting proper permissions on files and directories"
